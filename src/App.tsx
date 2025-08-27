@@ -30,7 +30,7 @@ function App() {
   const [messageText, setMessageText] = useState('');
   const [selectedUser, setSelectedUser] = useState<string>('');
   
-  const adminUsername = 'desireddit4us';
+  const adminUsername = 'desireddit4us'; // This is the admin username - enter this to login as admin
   
   // State management
   const [users, setUsers] = useState<User[]>([
