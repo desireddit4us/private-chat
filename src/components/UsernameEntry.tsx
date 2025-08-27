@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { User, Shield, AlertCircle } from 'lucide-react';
+import { User, Shield, AlertCircle, MessageCircle } from 'lucide-react';
 
 interface UsernameEntryProps {
   onUsernameSubmit: (username: string) => void;
@@ -55,8 +55,8 @@ const UsernameEntry: React.FC<UsernameEntryProps> = ({ onUsernameSubmit }) => {
           <div className="bg-orange-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
             <User className="h-8 w-8 text-white" />
           </div>
-          <h1 className="text-2xl font-bold text-white mb-2">Private Chat Access</h1>
-          <p className="text-gray-400">Enter your Reddit username to begin</p>
+          <h1 className="text-2xl font-bold text-white mb-2">Private Platform Access</h1>
+          <p className="text-gray-400">Enter your Reddit username to request access</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -93,8 +93,24 @@ const UsernameEntry: React.FC<UsernameEntryProps> = ({ onUsernameSubmit }) => {
             <div className="flex items-start space-x-2">
               <Shield className="h-4 w-4 text-blue-400 flex-shrink-0 mt-0.5" />
               <div className="text-sm text-blue-200">
-                <p className="font-medium mb-1">Username Verification</p>
-                <p>We verify your Reddit username to ensure authentic communication and prevent duplicate sessions.</p>
+                <p className="font-medium mb-1">Access Request Process</p>
+                <p>Your request will be reviewed by the admin. If approved, you'll receive a unique verification ID to confirm via Reddit.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-gray-800 border border-gray-700 rounded-lg p-3">
+            <div className="flex items-start space-x-2">
+              <MessageCircle className="h-4 w-4 text-gray-400 flex-shrink-0 mt-0.5" />
+              <div className="text-sm text-gray-300">
+                <p className="font-medium mb-1">Verification Steps</p>
+                <ol className="list-decimal list-inside space-y-1 text-xs">
+                  <li>Submit your Reddit username</li>
+                  <li>Wait for admin approval</li>
+                  <li>Receive unique verification ID</li>
+                  <li>Send ID to u/desireddit4us on Reddit</li>
+                  <li>Get verified and access exclusive content</li>
+                </ol>
               </div>
             </div>
           </div>
@@ -104,12 +120,12 @@ const UsernameEntry: React.FC<UsernameEntryProps> = ({ onUsernameSubmit }) => {
             disabled={isVerifying || !username.trim()}
             className="w-full py-3 bg-orange-600 text-white rounded-lg font-medium hover:bg-orange-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isVerifying ? 'Verifying Username...' : 'Enter Chat'}
+            {isVerifying ? 'Submitting Request...' : 'Request Access'}
           </button>
         </form>
 
         <p className="text-xs text-gray-400 text-center mt-6">
-          Your identity remains anonymous. Only your Reddit username is used for verification.
+          Only verified users can access private content. Your Reddit username is used for verification purposes only.
         </p>
       </div>
     </div>
