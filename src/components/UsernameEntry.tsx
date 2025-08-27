@@ -29,20 +29,17 @@ const UsernameEntry: React.FC<UsernameEntryProps> = ({ onUsernameSubmit }) => {
     setIsVerifying(true);
     setError('');
 
-    // Simulate Reddit API verification (in real app, verify with Reddit API)
-    setTimeout(() => {
-      // Check if username is already in use (simulate database check)
-      const existingUsers = JSON.parse(localStorage.getItem('activeUsers') || '[]');
-      if (existingUsers.includes(cleanUsername)) {
-        setError('This username is already in an active chat session');
+    // Check if this is admin login
+    if (cleanUsername === 'desireddit4us') {
+      setTimeout(() => {
+        onUsernameSubmit(cleanUsername);
         setIsVerifying(false);
-        return;
-      }
+      }, 1000);
+      return;
+    }
 
-      // Add to active users
-      existingUsers.push(cleanUsername);
-      localStorage.setItem('activeUsers', JSON.stringify(existingUsers));
-      
+    // For regular users - simulate Reddit API verification
+    setTimeout(() => {
       onUsernameSubmit(cleanUsername);
       setIsVerifying(false);
     }, 2000);
